@@ -65,6 +65,10 @@
 #	define __LITTLE_ENDIAN LITTLE_ENDIAN
 #	define __PDP_ENDIAN    PDP_ENDIAN
 
+#elif defined(__QNX__)
+
+#	include <net/netbyte.h>
+
 #elif defined(__sun) && defined(__SVR4)
 
 #	include <sys/types.h>
