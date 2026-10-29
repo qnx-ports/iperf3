@@ -30,7 +30,11 @@
 #ifndef __TIMER_H
 #define __TIMER_H
 
+#ifdef __QNX__
+#include <sys/time.h>
+#else
 #include <time.h>
+#endif
 #include "iperf_time.h"
 
 /* TimerClientData is an opaque value that tags along with a timer.  The

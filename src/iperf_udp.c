@@ -381,8 +381,9 @@ iperf_udp_accept(struct iperf_test *test)
     if (rc > 0) {
 	if (test->settings->socket_bufsize == 0) {
 	    int bufsize = test->settings->blksize + UDP_BUFFER_EXTRA;
-	    printf("Increasing socket buffer size to %d\n",
-		bufsize);
+	    if (!test->json_output)
+		printf("Increasing socket buffer size to %d\n",
+		    bufsize);
 	    test->settings->socket_bufsize = bufsize;
 	    rc = iperf_udp_buffercheck(test, s);
 	    if (rc < 0)
@@ -493,8 +494,9 @@ iperf_udp_connect(struct iperf_test *test)
     if (rc > 0) {
 	if (test->settings->socket_bufsize == 0) {
 	    int bufsize = test->settings->blksize + UDP_BUFFER_EXTRA;
-	    printf("Increasing socket buffer size to %d\n",
-		bufsize);
+	    if (!test->json_output)
+		printf("Increasing socket buffer size to %d\n",
+		    bufsize);
 	    test->settings->socket_bufsize = bufsize;
 	    rc = iperf_udp_buffercheck(test, s);
 	    if (rc < 0)
